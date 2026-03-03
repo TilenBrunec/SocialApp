@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Slike\heart_3916767.png" />
+    <None Remove="Slike\paper-plane-top_9821630.png" />
+    <None Remove="Slike\profile.jpg" />
+    <None Remove="Slike\replace_9291879.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Slike\heart_3916767.png" />
+    <Resource Include="Slike\paper-plane-top_9821630.png" />
+    <Resource Include="Slike\profile.jpg" />
+    <Resource Include="Slike\replace_9291879.png" />
+  </ItemGroup>
+
+</Project>
