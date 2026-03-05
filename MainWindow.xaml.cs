@@ -21,9 +21,8 @@ namespace SocialApp
             InitializeComponent();
         }
 
-        private void BtnObjavi_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
+        private void MenuIzhodClick(object sender, RoutedEventArgs e)
+              => Application.Current.Shutdown();
     }
 }
