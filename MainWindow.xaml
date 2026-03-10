@@ -14,71 +14,66 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
-        <Menu Grid.Row="0" Background="#1877F2" Padding="5">
-            <MenuItem Header="Datoteka" Foreground="White" Background="#1877F2" >
-                <MenuItem Header="Izhod" Foreground="White" Click="MenuIzhodClick" />
+        <Menu Grid.Row="0">
+            <MenuItem Header="Datoteka">
+                <MenuItem Header="Izhod" Click="MenuIzhodClick"/>
             </MenuItem>
-            <MenuItem Header="Objave" Foreground="White" Background="#1877F2"  />
-            <MenuItem Header="Dodaj staticno" Foreground="White"/>
-            <MenuItem Header="Uredi statcno" Foreground="White"  />
-            <MenuItem Header="Dodaj" Foreground="White" />
-            <MenuItem Header="Uredi" Foreground="White" />
-            <MenuItem Header="Odstrani" Foreground="White"  />
+            <MenuItem Header="Objave">
+                <MenuItem Header="Dodaj statično"/>
+                <MenuItem Header="Uredi statično"/>
+                <MenuItem Header="Dodaj"/>
+                <MenuItem Header="Uredi"/>
+                <MenuItem Header="Odstrani"/>
+            </MenuItem>
         </Menu>
 
-
-        <Border Grid.Row="1" Background="White" BorderBrush="Gray" Padding="2">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <Border Width="70" Height="70" CornerRadius="35"  BorderBrush="#1877F2" BorderThickness="2">
+        <Border Grid.Row="1" Style="{StaticResource HeaderBorderStyle}">
+            <StackPanel Orientation="Horizontal">
+                <Border Style="{StaticResource ProfileImageBorderStyle}">
                     <Border.Clip>
                         <EllipseGeometry Center="35,35" RadiusX="35" RadiusY="35"/>
                     </Border.Clip>
                     <Image x:Name="ProfilnaSlika" Source="Slike/profile.jpg" Stretch="UniformToFill"/>
                 </Border>
+
                 <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
-                    <TextBox x:Name="TXTimeHeader" Text="Tiki Eld" FontSize="16" FontWeight="Bold" IsReadOnly="True" />
-                    <TextBox Text="@TikiEld" FontSize="12" Foreground="Gray"  />
+                    <TextBox x:Name="TXTimeHeader" Text="Tiki Eld" Style="{StaticResource BoldTextBoxStyle}"/>
+                    <TextBox Text="@TikiEld" Style="{StaticResource ReadOnlyStyle}" Foreground="{StaticResource grayBrush}"/>
                 </StackPanel>
 
-
-                <Border Margin="40,0,0,0" VerticalAlignment="Center">
+                <StackPanel Margin="40,0,0,0" VerticalAlignment="Center">
                     <UniformGrid Rows="1" Columns="3" Width="220">
                         <StackPanel HorizontalAlignment="Center">
-                            <TextBox x:Name="TxtStObjav" Text="0" FontSize="15" HorizontalAlignment="Center"/>
-                            <TextBox Text="Objave" FontSize="12" Foreground="Gray" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="TxtStObjav" Text="0" Style="{StaticResource ReadOnlyStyle}"/>
+                            <TextBox Text="Objave" Style="{StaticResource ReadOnlyStyle}" Foreground="{StaticResource grayBrush}"/>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center">
-                            <TextBox x:Name="TxtStSledilcev" Text="0" FontSize="15" HorizontalAlignment="Center"/>
-                            <TextBox Text="Sledilci" FontSize="12" Foreground="Gray" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="TxtStSledilcev" Text="0" Style="{StaticResource ReadOnlyStyle}"/>
+                            <TextBox Text="Sledilci" Style="{StaticResource ReadOnlyStyle}" Foreground="{StaticResource grayBrush}"/>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center">
-                            <TextBox x:Name="TxtStSledi" Text="0" FontSize="15" HorizontalAlignment="Center"/>
-                            <TextBox Text="Sledi" FontSize="12" Foreground="Gray" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="TxtStSledi" Text="0" Style="{StaticResource ReadOnlyStyle}"/>
+                            <TextBox Text="Sledi" Style="{StaticResource ReadOnlyStyle}" Foreground="{StaticResource grayBrush}"/>
                         </StackPanel>
                     </UniformGrid>
-                </Border>
+                </StackPanel>
             </StackPanel>
         </Border>
 
+        <TabControl Grid.Row="2" Style="{StaticResource TabConrolStyle}">
 
-        <TabControl Grid.Row="2" Background="#F0F2F5" BorderThickness="0">
+            <TabItem Header="Zid" Style="{StaticResource TabItemStyle}">
+                <DockPanel Margin="20" LastChildFill="True">
 
-            <TabItem Header="Zid">
-                <!-- sem pride koraku 5 -->
-                <DockPanel Margin=" 20" LastChildFill="True">
-
-
-                    <Border DockPanel.Dock="Right" Width="200" Background="White" CornerRadius="8" Padding="10" Margin="10" VerticalAlignment="Top">
+                    <Border DockPanel.Dock="Right" Style="{StaticResource NewPostBorderStyle}">
                         <StackPanel>
-                            <TextBlock Text="Nova Objava " FontWeight="Bold" Margin="0,0,0,8"/>
-                            <TextBox x:Name="TxtNovaObjava"  Height="70" TextWrapping="Wrap" AcceptsReturn="True"/>
-                            <Button x:Name ="BtnObjavi" Height="36" Width="32" Margin="0,8,0,0">
-                                <Image Source="/Slike/paper-plane-top_9821630.png" Width="16" Height="16" />
-                            </Button>        
+                            <TextBlock Text="Nova Objava" FontWeight="Bold" Margin="0,0,0,8"/>
+                            <TextBox x:Name="TxtNovaObjava" Height="70" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource InputStyle}"/>
+                            <Button x:Name="BtnObjavi" Style="{StaticResource ButtonStyle}">
+                                <Image Source="Slike/paper-plane-top_9821630.png" Width="16" Height="16"/>
+                            </Button>
                         </StackPanel>
                     </Border>
-
 
                     <Grid>
                         <Grid.RowDefinitions>
@@ -86,16 +81,17 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <ListView x:Name="ListViewObjave" Grid.Row="0" >
+                        <ListView x:Name="ListViewObjave" Grid.Row="0" Style="{StaticResource ListViewStyle}"
+                            MouseDoubleClick="ListViewObjave_MouseDoubleClick">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Background="White" CornerRadius="8" BorderBrush="#CED0D4" BorderThickness="1" Padding="14" Margin="2,4" MinWidth="300">
+                                    <Border Style="{StaticResource CardBorderStyle}" MinWidth="300">
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Avtor}" FontWeight="Bold" Margin="0,0,0,4"/>
-                                            <TextBlock Text="{Binding Vsebina}" TextWrapping="Wrap" Margin="0,0,0,8"/>
-                                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
-                                                <TextBlock Text="{Binding Datum}" FontSize="14"/>
-                                                <TextBlock Text="{Binding Likes, StringFormat='tu not priejo pol lajki'}" FontSize="14"/>
+                                            <TextBlock Text="{Binding Avtor}" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Vsebina}" TextWrapping="Wrap"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Datum}" Foreground="{StaticResource grayBrush}"/>
+                                                <TextBlock Text="{Binding Likes, StringFormat=' ❤️ {0}'}" Foreground="{StaticResource grayBrush}"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>
@@ -103,32 +99,25 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <Button x:Name="BtnVseckaj" Grid.Row="1" Width="36" Height="32" Margin="0,8,0,0">
-                            
-                                <Image Source="/Slike/heart_3916767.png" Width="16" Height="16" />
-                                
-                            
+                        <Button x:Name="BtnVseckaj" Grid.Row="1" Style="{StaticResource ButtonStyle}">
+                            <Image Source="Slike/heart_3916767.png" Width="16" Height="16"/>
                         </Button>
-
-
                     </Grid>
 
                 </DockPanel>
             </TabItem>
 
-            <TabItem Header="  O meni" Margin="2,-2,-2,0">
-                <!-- sem pride koraku 6 -->
+            <TabItem Header="O meni" Style="{StaticResource TabItemStyle}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <Border Background="White" CornerRadius="8" Margin="20" Padding="25" MaxWidth="500" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border Style="{StaticResource CardBorderStyle}" Margin="20" Padding="25" MaxWidth="500" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <StackPanel>
-
-                            <TextBox Text="Moj profil" FontSize="18"/>
+                            <TextBox Text="Moj profil" FontSize="18" Style="{StaticResource ReadOnlyStyle}"/>
 
                             <Border Width="80" Height="80" CornerRadius="40" HorizontalAlignment="Left">
                                 <Border.Clip>
                                     <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
                                 </Border.Clip>
-                                <Image Source="/Slike/profile.jpg" Stretch="UniformToFill"/>
+                                <Image Source="Slike/profile.jpg" Stretch="UniformToFill"/>
                             </Border>
 
                             <Grid>
@@ -143,30 +132,26 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Ime:" VerticalAlignment="Center"/>
-                                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtIme" Margin="0,3" Text="TIki" />
-
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Priimek:" VerticalAlignment="Center"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtPriimek" Margin="0,3" Text="Eldarov"/>
-
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Mail:" VerticalAlignment="Center"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtMail" Margin="0,3" Text="tiki@gamil.com"/>
-
-                                <TextBlock Grid.Row="3" Grid.Column="0" Text="O meni:" VerticalAlignment="Top"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtOMeni" Margin="0,3" TextWrapping="Wrap" AcceptsReturn="True" Height="60" Text="Sem Tiki Eld"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Ime:"/>
+                                <TextBox   Grid.Row="0" Grid.Column="1" x:Name="TxtIme"     Text="Tiki"          Style="{StaticResource InputStyle}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Priimek:"/>
+                                <TextBox   Grid.Row="1" Grid.Column="1" x:Name="TxtPriimek" Text="Eldarov"       Style="{StaticResource InputStyle}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Mail:"/>
+                                <TextBox   Grid.Row="2" Grid.Column="1" x:Name="TxtMail"    Text="tiki@gmail.com" Style="{StaticResource InputStyle}"/>
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="O meni:"/>
+                                <TextBox   Grid.Row="3" Grid.Column="1" x:Name="TxtOMeni"   Text="Sem Tiki Eld"
+                                           TextWrapping="Wrap" AcceptsReturn="True" Height="60"
+                                           Style="{StaticResource InputStyle}"/>
                             </Grid>
 
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
-                                <Button x:Name="BtnShrani"  Height="32" Width="36" >
-                                    <Image Source="/Slike/paper-plane-top_9821630.png" Width="16" Height="16" />
-                                    
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                                <Button x:Name="BtnShrani" Style="{StaticResource ButtonStyle}">
+                                    <Image Source="Slike/paper-plane-top_9821630.png" Width="16" Height="16"/>
                                 </Button>
-                                <Button x:Name="BtnSpremeniSliko"  Height="32" Width="36" >
-                                    <Image Source="/Slike/replace_9291879.png" Width="16" Height="16" />
-
+                                <Button x:Name="BtnSpremeniSliko" Style="{StaticResource ButtonStyle}">
+                                    <Image Source="Slike/replace_9291879.png" Width="16" Height="16"/>
                                 </Button>
                             </StackPanel>
-
                         </StackPanel>
                     </Border>
                 </ScrollViewer>
