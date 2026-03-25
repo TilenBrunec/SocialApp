@@ -60,7 +60,7 @@
             </StackPanel>
         </Border>
 
-        <TabControl Grid.Row="2" Style="{StaticResource TabConrolStyle}">
+        <TabControl Grid.Row="2" Style="{StaticResource TabControlStyle}">
 
             <TabItem Header="Zid" Style="{StaticResource TabItemStyle}">
                 <DockPanel Margin="20" LastChildFill="True">
@@ -81,25 +81,46 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <ListView x:Name="ListViewObjave" Grid.Row="0" Style="{StaticResource ListViewStyle}"
+                        <ListView x:Name="ListViewObjave" Grid.Row="0"
+                            Style="{StaticResource ListViewStyle}"
+                            ItemContainerStyle="{StaticResource ListViewItemStyle}"
                             MouseDoubleClick="ListViewObjave_MouseDoubleClick">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Style="{StaticResource CardBorderStyle}" MinWidth="300">
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Avtor}" FontWeight="Bold"/>
-                                            <TextBlock Text="{Binding Vsebina}" TextWrapping="Wrap"/>
+
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Datum}" Foreground="{StaticResource grayBrush}"/>
-                                                <TextBlock Text="{Binding Likes, StringFormat=' ❤️ {0}'}" Foreground="{StaticResource grayBrush}"/>
+                                                <Image Source="{Binding Slika}" Width="40" Height="40" Stretch="UniformToFill" Margin="0,0,8,0"/>
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock x:Name="TxtAvtor" Text="{Binding Avtor}" FontWeight="Bold"/>
+                                                    <TextBlock Text="{Binding Datum}" Foreground="{StaticResource grayBrush}"/>
+                                                </StackPanel>
                                             </StackPanel>
+
+                                            <TextBlock Text="{Binding Vsebina}" TextWrapping="Wrap" Margin="0,6,0,4"/>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Kategorija}" Foreground="{StaticResource grayBrush}" Margin="0,0,12,0"/>
+                                                <TextBlock x:Name="TxtLikes" Text="{Binding Likes, StringFormat='❤️ {0}'}"/>
+                                            </StackPanel>
+
                                         </StackPanel>
                                     </Border>
+
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding BrezVseckov}" Value="True">
+                                            <Setter TargetName="TxtLikes" Property="Foreground" Value="Gray"/>
+                                            <Setter TargetName="TxtAvtor" Property="Foreground" Value="Gray"/>
+                                            <Setter TargetName="TxtLikes" Property="Text" Value="⚪ Brez všečkov"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <Button x:Name="BtnVseckaj" Grid.Row="1" Style="{StaticResource ButtonStyle}">
+                        <Button x:Name="BtnVseckaj" Grid.Row="1" Style="{StaticResource ButtonStyle}" Click="BtnVseckaj_Click">
                             <Image Source="Slike/heart_3916767.png" Width="16" Height="16"/>
                         </Button>
                     </Grid>

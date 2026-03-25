@@ -43,7 +43,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="TabConrolStyle" TargetType="TabControl">
+    <Style x:Key="TabControlStyle" TargetType="TabControl">
         <Setter Property="Background" Value="{StaticResource lightGray}"/>
     </Style>
 
@@ -87,6 +87,18 @@
         <Setter Property="Margin"          Value="10"/>
         <Setter Property="Width"           Value="200"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource blue}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
