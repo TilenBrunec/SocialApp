@@ -19,11 +19,11 @@
                 <MenuItem Header="Izhod" Click="MenuIzhodClick"/>
             </MenuItem>
             <MenuItem Header="Objave">
-                <MenuItem Header="Dodaj statično"/>
-                <MenuItem Header="Uredi statično"/>
+                <MenuItem Header="Dodaj statično" Command="{Binding DodajCommand}"/>
+                <MenuItem Header="Uredi statično" Command="{Binding UrediCommand}"/>
                 <MenuItem Header="Dodaj"/>
                 <MenuItem Header="Uredi"/>
-                <MenuItem Header="Odstrani"/>
+                <MenuItem Header="Odstrani" Command="{Binding OdstrabiCommand}"/>
             </MenuItem>
         </Menu>
 
@@ -84,6 +84,8 @@
                         <ListView x:Name="ListViewObjave" Grid.Row="0"
                             Style="{StaticResource ListViewStyle}"
                             ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                            ItemsSource="{Binding Objave}"
+                            SelectedItem="{Binding IzbranaObjava, Mode=TwoWay}"
                             MouseDoubleClick="ListViewObjave_MouseDoubleClick">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -120,7 +122,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <Button x:Name="BtnVseckaj" Grid.Row="1" Style="{StaticResource ButtonStyle}" Click="BtnVseckaj_Click">
+                        <Button x:Name="BtnVseckaj" Grid.Row="1" Style="{StaticResource ButtonStyle}" Command="{Binding VseckajCommand}">
                             <Image Source="Slike/heart_3916767.png" Width="16" Height="16"/>
                         </Button>
                     </Grid>
