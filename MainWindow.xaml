@@ -21,9 +21,9 @@
             <MenuItem Header="Objave">
                 <MenuItem Header="Dodaj statično" Command="{Binding DodajCommand}"/>
                 <MenuItem Header="Uredi statično" Command="{Binding UrediCommand}"/>
-                <MenuItem Header="Dodaj"/>
-                <MenuItem Header="Uredi"/>
-                <MenuItem Header="Odstrani" Command="{Binding OdstrabiCommand}"/>
+                <MenuItem Header="Dodaj"  Command="{Binding OdpriDodajCommand}"/>
+                <MenuItem Header="Uredi" Command="{Binding OdpriUrediCommand}"/>
+                <MenuItem Header="Odstrani" Command="{Binding OdstraniCommand}"/>
             </MenuItem>
         </Menu>
 
@@ -67,9 +67,9 @@
 
                     <Border DockPanel.Dock="Right" Style="{StaticResource NewPostBorderStyle}">
                         <StackPanel>
-                            <TextBlock Text="Nova Objava" FontWeight="Bold" Margin="0,0,0,8"/>
-                            <TextBox x:Name="TxtNovaObjava" Height="70" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource InputStyle}"/>
-                            <Button x:Name="BtnObjavi" Style="{StaticResource ButtonStyle}">
+                            <TextBlock Text="Nova objava" FontWeight="Bold" Margin="0,0,0,8"/>
+                            
+                            <Button x:Name="BtnObjavi" Style="{StaticResource ButtonStyle}" Command="{Binding OdpriDodajCommand}">
                                 <Image Source="Slike/paper-plane-top_9821630.png" Width="16" Height="16"/>
                             </Button>
                         </StackPanel>

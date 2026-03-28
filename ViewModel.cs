@@ -32,12 +32,19 @@ namespace SocialApp
                   ((Command)OdstraniCommand).PosodobiCanExecute();
                   ((Command)UrediCommand).PosodobiCanExecute();
                   ((Command)VseckajCommand).PosodobiCanExecute();
+                  ((Command)OdpriUrediCommand).PosodobiCanExecute();
+
             }
         }
+        private UrediObjavo? _urediWindow = null;
         public ICommand DodajCommand { get; private set; }
         public ICommand UrediCommand { get;private set; }
         public ICommand OdstraniCommand { get;private set; }
         public ICommand VseckajCommand { get; private set; }
+        public ICommand OdpriDodajCommand { get; private set; }
+        public ICommand OdpriUrediCommand { get; private set; }
+
+       
 
         public ViewModel()
         {
@@ -50,6 +57,8 @@ namespace SocialApp
             UrediCommand = new Command(Uredi, CanUredi);
             OdstraniCommand = new Command(Odstrani, CanOdstrani);
             VseckajCommand = new Command(Vseckaj, CanVseckaj);
+            OdpriDodajCommand = new Command(OdpriDodaj);
+            OdpriUrediCommand = new Command(OdpriUredi, CanUredi);
         }
         private void Dodaj(object? obj)
         {
@@ -61,7 +70,7 @@ namespace SocialApp
             {
                 _izbranaObjava.Vsebina += " urejeno statocno";
                 _izbranaObjava.Avtor= "Uredil dEV";
-                _izbranaObjava.Likes = 999;
+                _izbranaObjava.Likes = 0;
             }
         }
         private bool CanUredi(object? obj)
@@ -89,6 +98,29 @@ namespace SocialApp
         private bool CanVseckaj(object? obj)
         {
             return _izbranaObjava != null;
+        }
+        private void OdpriDodaj(object? obj)
+        {
+            DodajObjavo dodajWindow = new DodajObjavo();
+            if (dodajWindow.ShowDialog() == true)
+            {
+                _objave.Add(dodajWindow.NovaObjava);
+            }
+        }
+        private void OdpriUredi(object? obj)
+        {
+            if ( _urediWindow == null)
+            {
+                _urediWindow = new UrediObjavo(this);
+                _urediWindow.Owner = System.Windows.Application.Current.MainWindow;
+                _urediWindow.Closed += OnUrediWindowClosed;
+                _urediWindow.Show();
+
+            }
+        }
+        private void OnUrediWindowClosed(object? sender, EventArgs e)
+        {
+            _urediWindow = null;
         }
 
     }
