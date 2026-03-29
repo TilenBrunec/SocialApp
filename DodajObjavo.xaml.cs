@@ -24,6 +24,7 @@ namespace SocialApp
         {
             InitializeComponent();
             NovaObjava = new Objava();
+            TxtDatumPrikaz.Text = DateTime.Now.ToString("d.M.yyyy");
         }
 
         private void ImgSlika_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)

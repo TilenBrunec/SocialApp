@@ -48,9 +48,9 @@ namespace SocialApp
 
         public ViewModel()
         {
-            _objave.Add(new Objava { Avtor = "Tiki Eld", Vsebina = "Pozdravljen svet!", Datum = "10.3.2026", Likes = 5, Slika = "/Slike/profile.jpg", Kategorija = "Splošno" });
-            _objave.Add(new Objava { Avtor = "Tiki Eld", Vsebina = "Danes brez všečkov.", Datum = "11.3.2026", Likes = 0, Slika = "/Slike/profile.jpg", Kategorija = "Osebno" });
-            _objave.Add(new Objava { Avtor = "Tiki Eld", Vsebina = "Programiranje je zabavno!", Datum = "12.3.2026", Likes = 12, Slika = "/Slike/profile.jpg", Kategorija = "Tehnologija" });
+            _objave.Add(new Objava { Avtor = "Tiki Eld", Vsebina = "Pozdravljen svet", Datum = "10.3.2026", Likes = 5, Slika = "/Slike/profile.jpg", Kategorija = "Splošno" });
+            _objave.Add(new Objava { Avtor = "Tiki Eld", Vsebina = "Mr beast.", Datum = "11.3.2026", Likes = 0, Slika = "/Slike/profile.jpg", Kategorija = "Osebno" });
+            _objave.Add(new Objava { Avtor = "Tiki Eld", Vsebina = "Zdarvoo ", Datum = "12.3.2026", Likes = 12, Slika = "/Slike/profile.jpg", Kategorija = "Tehnologija" });
 
 
             DodajCommand = new Command(Dodaj);
