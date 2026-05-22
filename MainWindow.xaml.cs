@@ -13,9 +13,6 @@ using System.Windows.Shapes;
 
 namespace SocialApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public class Objava : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -61,31 +58,34 @@ namespace SocialApp
             get { return kategorija; }
             set { kategorija = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Kategorija")); }
         }
-
         public bool BrezVseckov
         {
             get { return likes == 0; }
         }
     }
 
-
     public partial class MainWindow : Window
     {
-       
         public MainWindow()
         {
-           InitializeComponent();
-           this.DataContext = new ViewModel();
+            InitializeComponent();
+            var vm = new ViewModel();
+            vm.VoiceTabChange = (tabIndex) =>
+            {
+                MainTabControl.SelectedIndex = tabIndex;
+            };
+            this.DataContext = vm;
         }
 
         private void MenuIzhodClick(object sender, RoutedEventArgs e)
-              => Application.Current.Shutdown();
+            => Application.Current.Shutdown();
 
-        private void ListViewObjave_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            if (ListViewObjave.SelectedItem is Objava objava) {
+        private void ListViewObjave_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ListViewObjave.SelectedItem is Objava objava)
+            {
                 MessageBox.Show(objava.Vsebina, "to je vsebina");
             }
         }
-
     }
 }

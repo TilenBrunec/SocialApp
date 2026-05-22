@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Speech" Version="10.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Slike\heart_3916767.png" />
     <Resource Include="Slike\paper-plane-top_9821630.png" />
     <Resource Include="Slike\profile.jpg" />
